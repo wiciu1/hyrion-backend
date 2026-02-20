@@ -1,14 +1,13 @@
 package pl.hyrion.hyrionbackend.offer.query.model;
 
-import pl.hyrion.hyrionbackend.offer.command.domain.JobOfferId;
-
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.UUID;
 
 
 // Dto for viewing given Job Offer for user
 public record JobOfferView (
-    JobOfferId id,
+    UUID id,
     String title,
     String location,
     String salaryDisplayed,         // finally formatted salary
