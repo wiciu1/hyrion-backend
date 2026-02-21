@@ -1,6 +1,7 @@
 package pl.hyrion.hyrionbackend.offer.command.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import pl.hyrion.hyrionbackend.offer.command.domain.enums.ExperienceLevel;
 import pl.hyrion.hyrionbackend.offer.command.domain.enums.SourcePlatform;
@@ -34,6 +35,7 @@ public class JobOffer {
     private SourcePlatform sourcePlatform;
     private Status status;
 
+    @Builder
     public JobOffer(String title, String url, String location, Salary salary, Set<String> skills, boolean isRemote,
                     LocalDateTime createdAt, LocalDateTime validTo, String originalId, ExperienceLevel experienceLevel,
                     SourcePlatform sourcePlatform) {

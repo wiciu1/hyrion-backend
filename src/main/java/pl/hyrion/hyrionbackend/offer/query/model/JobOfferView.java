@@ -15,5 +15,6 @@ public record JobOfferView (
     boolean isRemote,
     String experienceLevel,
     LocalDateTime createdAt,
+    LocalDateTime validTo,
     String sourceUrl
 ) {}
