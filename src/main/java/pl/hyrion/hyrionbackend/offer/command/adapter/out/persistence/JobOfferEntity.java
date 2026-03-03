@@ -54,4 +54,5 @@ public class JobOfferEntity {
 
     @Column(name = "status")
     private String status;
+
 }
