@@ -1,6 +1,8 @@
 package pl.hyrion.hyrionbackend.offer.query.application.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import pl.hyrion.hyrionbackend.offer.command.adapter.out.persistence.JobOfferEntity;
 import pl.hyrion.hyrionbackend.offer.command.adapter.out.persistence.JobOfferJpaRepository;
@@ -15,10 +17,14 @@ public class JobOfferQueryService {
 
     private final JobOfferJpaRepository repository;
 
-    public List<JobOfferView> getAllJobOffers() {
-        return repository.findAll().stream()
-                .map(this::mapToView)
-                .toList();
+    public Page<JobOfferView> getAllJobOffers(String location, String experienceLevel, Pageable pageable) {
+        Page<JobOfferEntity> entityPage = repository.findByFilters(
+                location,
+                experienceLevel,
+                pageable
+        );
+
+        return entityPage.map(this::mapToView);
     }
 
     public JobOfferView getJobOfferById(UUID id) {
