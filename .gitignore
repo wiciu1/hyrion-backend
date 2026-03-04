@@ -34,3 +34,6 @@ build/
 
 ### Configuration ###
 application.properties
+
+### Security ###
+.env

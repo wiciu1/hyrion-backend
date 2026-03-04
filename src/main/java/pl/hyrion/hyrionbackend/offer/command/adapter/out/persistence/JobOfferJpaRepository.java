@@ -14,7 +14,7 @@ import java.util.UUID;
 public interface JobOfferJpaRepository extends JpaRepository<JobOfferEntity, UUID> {
 
     @Query("SELECT o FROM JobOfferEntity o WHERE " +
-            "(:location IS NULL OR LOWER(o.location) LIKE LOWER(CONCAT('%', :location, '%'))) AND " +
+            "(:location IS NULL OR LOWER(o.location) LIKE :location) AND " +
             "(:experienceLevel IS NULL OR o.experienceLevel = :experienceLevel) AND " +
             "(:sourcePlatform IS NULL OR o.sourcePlatform = :sourcePlatform) AND " +
             "(:isRemote IS NULL OR o.isRemote = :isRemote) AND " +
