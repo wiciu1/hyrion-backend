@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service;
 import pl.hyrion.hyrionbackend.offer.command.adapter.out.persistence.JobOfferEntity;
 import pl.hyrion.hyrionbackend.offer.command.adapter.out.persistence.JobOfferJpaRepository;
 import pl.hyrion.hyrionbackend.offer.query.model.JobOfferView;
-
+import pl.hyrion.hyrionbackend.offer.command.domain.exception.OfferNotFoundException;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +19,12 @@ public class JobOfferQueryService {
         return repository.findAll().stream()
                 .map(this::mapToView)
                 .toList();
+    }
+
+    public JobOfferView getJobOfferById(UUID id) {
+        return repository.findById(id)
+                .map(this::mapToView)
+                .orElseThrow(() -> new OfferNotFoundException("Offer not found with id: " + id));
     }
 
     private JobOfferView mapToView (JobOfferEntity entity) {
