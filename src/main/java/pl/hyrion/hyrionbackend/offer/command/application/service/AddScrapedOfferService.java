@@ -61,8 +61,8 @@ public class AddScrapedOfferService implements AddScrapedOfferUseCase {
         try{
             return ExperienceLevel.valueOf(experienceLevel.toUpperCase());
         }
-        catch (InvalidJobOfferException e) {
-            return null;
+        catch (IllegalArgumentException e) {
+            throw new InvalidJobOfferException("Invalid experience level: " + experienceLevel + ". Available values: TRAINEE, JUNIOR, MID, SENIOR");
         }
     }
 
@@ -73,8 +73,8 @@ public class AddScrapedOfferService implements AddScrapedOfferUseCase {
         try{
             return SourcePlatform.valueOf(sourcePlatform.toUpperCase());
         }
-        catch (InvalidJobOfferException e) {
-            return null;
+        catch (IllegalArgumentException e) {
+            throw new InvalidJobOfferException("Invalid source platform: " + sourcePlatform + ". Available values: NOFLUFFJOBS, SOLIDJOBS");
         }
     }
 

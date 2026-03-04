@@ -12,7 +12,7 @@ This project moves away from the traditional, tightly-coupled layered architectu
 * **Domain-Driven Design:** Features a rich domain model with a strictly encapsulated Aggregates, Value Objects, and Guard Clauses to ensure business invariants are always met. No anemic domain models.
 * **CQRS (Command and Query Responsibility Segregation):**
   * **Command Side:** Optimized for complex business validation and state mutation before saving to the database.
-  * **Query Side:** *(Work in Progress)* Optimized for high-performance data retrieval directly into flat DTOs, bypassing the domain model entirely.
+  * **Query Side:**  Optimized for high-performance data retrieval directly into flat DTOs, bypassing the domain model entirely.
 
 ## Project Structure
 

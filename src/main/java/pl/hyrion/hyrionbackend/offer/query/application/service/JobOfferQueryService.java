@@ -26,8 +26,12 @@ public class JobOfferQueryService {
                                               BigDecimal minSalary,
                                               String skill,
                                               Pageable pageable) {
+        String locationFilter = (location != null && !location.isBlank())
+                ? "%" + location.toLowerCase() + "%"
+                : null;
+
         Page<JobOfferEntity> entityPage = repository.findByFilters(
-                location, experienceLevel, sourcePlatform, isRemote, minSalary, skill, pageable);
+                locationFilter, experienceLevel, sourcePlatform, isRemote, minSalary, skill, pageable);
 
         return entityPage.map(this::mapToView);
     }
